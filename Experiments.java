@@ -37,11 +37,12 @@ public class Experiments {
     end = System.nanoTime();
     System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
+    /*
     start = end;
     SortedInsert(iterations);
     end = System.nanoTime();
     System.out.println("Sorted insertion took " + (end - start)/1000000.0 + "ms.\n");
-  
+  	*/
   }
   
   /**
@@ -52,8 +53,15 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> HeadInsert(int times, String payload) {
-  
+  public static List<String> HeadInsert(int times, String payload) 
+  {
+  	List l = new ArrayList<String>();
+  	
+  	for (int i = 0; i < times; i ++)
+  	{
+  		l.add(0, payload);
+  	}
+  	return l;
   }
   
   /**
@@ -63,8 +71,15 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> TailInsert(int times, String payload) {
-  
+  public static List<String> TailInsert(int times, String payload)
+  {
+  	List l = new ArrayList<String>();
+  	
+  	for (int i = 0; i < times; i ++)
+  	{
+  		l.add(payload);
+  	}
+  	return l;
   }
   
   
@@ -79,8 +94,9 @@ public class Experiments {
    * @return A reference to the constructed List
    */
   public static List<String> MidpointInsert(int times, String payload) {
-    List<T> l = new ArrayList<T>();
-    for(int i = 0; i < times; i++) {
+    List<String> l = new ArrayList<String>();
+    for(int i = 0; i < times; i++) 
+    {
       l.add(l.size() / 2, payload);
     }
     return l;
@@ -95,8 +111,40 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> AlternateInsert(int times, String payload) {
-  
+  public static List<String> AlternateInsert(int times, String payload) 
+  {
+  		int x = 0;
+  		List l = new ArrayList<String>();
+  		
+  		for (int i = 0; i < times; i ++)
+  		{
+			if (i == 0 || i == 1)
+			{
+				l.add(payload);
+			}
+			
+			else if (x == l.size() && i == times - 1) //if at end of line, but still need to insert
+			{
+				x = 0; 
+			}
+			
+			else
+			{
+				x++;
+				
+				if (x > l.size())
+				{
+					l.add(payload);
+				}
+				
+				else
+				{
+					l.add(x, payload);
+					x++;
+				}
+			}
+  		}
+  		return l;
   }
   
   //TODO Use a comparator in this method
