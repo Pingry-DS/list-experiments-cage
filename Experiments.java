@@ -30,7 +30,7 @@ public class Experiments {
     start = end;
     AlternateInsert(iterations, "Hello");
     end = System.nanoTime();
-    System.out.println("Insertion at tail took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
     start = end;
     AlternateInsert(iterations, "Hello");
