@@ -1,7 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Experiments {
+public class Experiments implements Comparator<String> 
+{
 
   public static void main(String[] args) {
   
@@ -30,12 +31,13 @@ public class Experiments {
     
     start = end;
     AlternateInsert(iterations, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
     end = System.nanoTime();
     System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
     /*
     start = end;
-    AlternateInsert(iterations, "Hello");
+    // pseudocode AlternateInsert(iterations, "Hello");
     end = System.nanoTime();
     System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
@@ -157,11 +159,14 @@ public class Experiments {
    * is inserted in the proper location such that at all times the constructed List is
    * in sorted order.
    *
+   * 
    * @param items The items to be inserted. Given in no particular order.
+   * @param c The comparator used to sort the elements
    * @return A reference to the constructed List
    */
-  public static List<String> SortedInsert(List<String> items) {
-    return null;
+  public static <T>  List<T> SortedInsert(List<T> items, Comparator <T> c) 
+  {
+  	return l;
   }
 
 }
