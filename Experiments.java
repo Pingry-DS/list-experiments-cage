@@ -8,6 +8,8 @@ public class Experiments implements Comparator<String>
   
     //TODO Check command line for number of iterations
     int iterations = 10000;
+    int iterations1 = 1000;
+    int iterations2 = 100;
     
     // Keep track of the run time for each call
     long start = System.nanoTime();
@@ -17,23 +19,76 @@ public class Experiments implements Comparator<String>
     // Make the testing calls and print the time after each
     HeadInsert(iterations, 5);
     end = System.nanoTime();
-    System.out.println("Insertion at head took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at head 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    HeadInsert(iterations1, 5);
+    end = System.nanoTime();
+    System.out.println("Insertion at head 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+	HeadInsert(iterations2, 5);
+    end = System.nanoTime();
+    System.out.println("Insertion at head 100 took " + (end - start)/1000000.0 + "ms.\n");
+
+    
     
     start = end;
     TailInsert(iterations, "Hello");
     end = System.nanoTime();
-    System.out.println("Insertion at tail took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at tail 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    TailInsert(iterations1, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at tail 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    start = end;
+    TailInsert(iterations2, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at tail 100 took " + (end - start)/1000000.0 + "ms.\n"); 
     
     start = end;
     MidpointInsert(iterations, "Hello");
     end = System.nanoTime();
-    System.out.println("Insertion at midpoint took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at midpoint 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    MidpointInsert(iterations1, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at midpoint 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    MidpointInsert(iterations2, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at midpoint 100 took " + (end - start)/1000000.0 + "ms.\n");    
+    
     
     start = end;
     AlternateInsert(iterations, "Hello");
     SortedInsert(new ArrayList<String>(), new StringLengthComparator());
     end = System.nanoTime();
-    System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Alternate insertion 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    AlternateInsert(iterations1, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
+    end = System.nanoTime();
+    System.out.println("Alternate insertion 1000 took " + (end - start)/1000000.0 + "ms.\n"); 
+    
+    
+    start = end;
+    AlternateInsert(iterations2, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
+    end = System.nanoTime();
+    System.out.println("Alternate insertion 100 took " + (end - start)/1000000.0 + "ms.\n");    
+       
+    
+    
     
     /*
     start = end;
@@ -167,6 +222,6 @@ public class Experiments implements Comparator<String>
   public static <T>  List<T> SortedInsert(List<T> items, Comparator <T> c) 
   {
   	return l;
-  }
+  } 
 
 }
