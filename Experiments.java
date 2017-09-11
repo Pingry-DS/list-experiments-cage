@@ -12,8 +12,9 @@ public class Experiments {
     long start = System.nanoTime();
     long end;
     
+    System.out.println("");
     // Make the testing calls and print the time after each
-    HeadInsert(iterations, "Hello");
+    HeadInsert(iterations, 5);
     end = System.nanoTime();
     System.out.println("Insertion at head took " + (end - start)/1000000.0 + "ms.\n");
     
@@ -32,12 +33,13 @@ public class Experiments {
     end = System.nanoTime();
     System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
+    /*
     start = end;
     AlternateInsert(iterations, "Hello");
     end = System.nanoTime();
     System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
     
-    /*
+
     start = end;
     SortedInsert(iterations);
     end = System.nanoTime();
@@ -53,9 +55,9 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> HeadInsert(int times, String payload) 
+  public static <T> List<T> HeadInsert(int times, T payload) 
   {
-  	List l = new ArrayList<String>();
+  	List l = new ArrayList<T>();
   	
   	for (int i = 0; i < times; i ++)
   	{
@@ -71,9 +73,9 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> TailInsert(int times, String payload)
+  public static <T> List<T> TailInsert(int times, T payload)
   {
-  	List l = new ArrayList<String>();
+  	List l = new ArrayList<T>();
   	
   	for (int i = 0; i < times; i ++)
   	{
@@ -93,13 +95,15 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> MidpointInsert(int times, String payload) {
-    List<String> l = new ArrayList<String>();
-    for(int i = 0; i < times; i++) 
-    {
-      l.add(l.size() / 2, payload);
-    }
-    return l;
+  public static <T> List<T> MidpointInsert(int times, T payload) 
+  
+  {
+    	List<T> l = new ArrayList<T>();
+   	    for(int i = 0; i < times; i++) 
+    	{
+      		l.add(l.size() / 2, payload);
+   		}
+    	return l;
   }
   
   //TODO Maybe make a ReverseAlternateInsert too.
@@ -111,10 +115,10 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> AlternateInsert(int times, String payload) 
+  public static <T> List<T> AlternateInsert(int times, T payload) 
   {
   		int x = 0;
-  		List l = new ArrayList<String>();
+  		List l = new ArrayList<T>();
   		
   		for (int i = 0; i < times; i ++)
   		{
