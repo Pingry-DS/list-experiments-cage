@@ -53,9 +53,9 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> HeadInsert(int times, String payload) 
+  public static <T> List<T> HeadInsert(int times, T payload) 
   {
-  	List l = new ArrayList<String>();
+  	List<T> l = new ArrayList<T>();
   	
   	for (int i = 0; i < times; i ++)
   	{
