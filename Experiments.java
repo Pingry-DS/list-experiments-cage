@@ -1,43 +1,102 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Experiments {
+public class Experiments implements Comparator<String> 
+{
 
   public static void main(String[] args) {
   
     //TODO Check command line for number of iterations
     int iterations = 10000;
+    int iterations1 = 1000;
+    int iterations2 = 100;
     
     // Keep track of the run time for each call
     long start = System.nanoTime();
     long end;
     
+    System.out.println("");
     // Make the testing calls and print the time after each
-    HeadInsert(iterations, "Hello");
+    HeadInsert(iterations, 5);
     end = System.nanoTime();
-    System.out.println("Insertion at head took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at head 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    HeadInsert(iterations1, 5);
+    end = System.nanoTime();
+    System.out.println("Insertion at head 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+	HeadInsert(iterations2, 5);
+    end = System.nanoTime();
+    System.out.println("Insertion at head 100 took " + (end - start)/1000000.0 + "ms.\n");
+
+    
     
     start = end;
     TailInsert(iterations, "Hello");
     end = System.nanoTime();
-    System.out.println("Insertion at tail took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at tail 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    TailInsert(iterations1, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at tail 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    start = end;
+    TailInsert(iterations2, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at tail 100 took " + (end - start)/1000000.0 + "ms.\n"); 
     
     start = end;
     MidpointInsert(iterations, "Hello");
     end = System.nanoTime();
-    System.out.println("Insertion at midpoint took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Insertion at midpoint 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    MidpointInsert(iterations1, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at midpoint 1000 took " + (end - start)/1000000.0 + "ms.\n");
+    
+    
+    start = end;
+    MidpointInsert(iterations2, "Hello");
+    end = System.nanoTime();
+    System.out.println("Insertion at midpoint 100 took " + (end - start)/1000000.0 + "ms.\n");    
+    
     
     start = end;
     AlternateInsert(iterations, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
     end = System.nanoTime();
-    System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Alternate insertion 10000 took " + (end - start)/1000000.0 + "ms.\n");
+    
     
     start = end;
-    AlternateInsert(iterations, "Hello");
+    AlternateInsert(iterations1, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
     end = System.nanoTime();
-    System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
+    System.out.println("Alternate insertion 1000 took " + (end - start)/1000000.0 + "ms.\n"); 
+    
+    
+    start = end;
+    AlternateInsert(iterations2, "Hello");
+    SortedInsert(new ArrayList<String>(), new StringLengthComparator());
+    end = System.nanoTime();
+    System.out.println("Alternate insertion 100 took " + (end - start)/1000000.0 + "ms.\n");    
+       
+    
+    
     
     /*
+    start = end;
+    // pseudocode AlternateInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println("Alternate insertion took " + (end - start)/1000000.0 + "ms.\n");
+    
+
     start = end;
     SortedInsert(iterations);
     end = System.nanoTime();
@@ -56,7 +115,7 @@ public class Experiments {
   public static <T> List<T> HeadInsert(int times, T payload) 
   {
   	List<T> l = new ArrayList<T>();
-  	
+  
   	for (int i = 0; i < times; i ++)
   	{
   		l.add(0, payload);
@@ -71,9 +130,9 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> TailInsert(int times, String payload)
+  public static <T> List<T> TailInsert(int times, T payload)
   {
-  	List l = new ArrayList<String>();
+  	List l = new ArrayList<T>();
   	
   	for (int i = 0; i < times; i ++)
   	{
@@ -93,13 +152,15 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> MidpointInsert(int times, String payload) {
-    List<String> l = new ArrayList<String>();
-    for(int i = 0; i < times; i++) 
-    {
-      l.add(l.size() / 2, payload);
-    }
-    return l;
+  public static <T> List<T> MidpointInsert(int times, T payload) 
+  
+  {
+    	List<T> l = new ArrayList<T>();
+   	    for(int i = 0; i < times; i++) 
+    	{
+      		l.add(l.size() / 2, payload);
+   		}
+    	return l;
   }
   
   //TODO Maybe make a ReverseAlternateInsert too.
@@ -111,10 +172,10 @@ public class Experiments {
    * @param payload The actual string to be inserted
    * @return A reference to the constructed List
    */
-  public static List<String> AlternateInsert(int times, String payload) 
+  public static <T> List<T> AlternateInsert(int times, T payload) 
   {
   		int x = 0;
-  		List l = new ArrayList<String>();
+  		List l = new ArrayList<T>();
   		
   		for (int i = 0; i < times; i ++)
   		{
@@ -153,11 +214,14 @@ public class Experiments {
    * is inserted in the proper location such that at all times the constructed List is
    * in sorted order.
    *
+   * 
    * @param items The items to be inserted. Given in no particular order.
+   * @param c The comparator used to sort the elements
    * @return A reference to the constructed List
    */
-  public static List<String> SortedInsert(List<String> items) {
-    return null;
-  }
+  public static <T>  List<T> SortedInsert(List<T> items, Comparator <T> c) 
+  {
+  	return l;
+  } 
 
 }
