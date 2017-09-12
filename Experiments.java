@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.ArrayList;
 
-public class Experiments implements Comparator<String> 
+public class Experiments //implements Comparator<String> 
 {
 
   public static void main(String[] args) {
@@ -219,9 +219,10 @@ public class Experiments implements Comparator<String>
    * @param c The comparator used to sort the elements
    * @return A reference to the constructed List
    */
+/*
   public static <T>  List<T> SortedInsert(List<T> items, Comparator <T> c) 
   {
   	return l;
   } 
-
+*/
 }
