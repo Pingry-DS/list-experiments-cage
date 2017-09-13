@@ -1,5 +1,8 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
+
+
 
 public class Experiments 
 {
@@ -105,7 +108,7 @@ public class Experiments
     list.add("zebra");
     list.add("fish");    
    
-    Comparator comp = new Comparator<T>();
+    Comparator comp = new CompareClass();
     SortedInsert(list, comp);
     end = System.nanoTime();
     System.out.println("Sorted insertion took " + (end - start)/1000000.0 + "ms.\n");
@@ -256,7 +259,7 @@ public class Experiments
   {
 
     
-    List<T> l = new ArrayList<String>();
+    List<T> l = new ArrayList<T>();
     
     for (int i = 0; i < items.size(); i ++)
     {
