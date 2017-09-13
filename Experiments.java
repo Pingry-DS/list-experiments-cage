@@ -219,7 +219,7 @@ public class Experiments
   		return l;
   }
   
-  //TODO Use a comparator in this method
+
   /**
    * Creates a List and inserts the given payload items, in the order they are given. Each item
    * is inserted in the proper location such that at all times the constructed List is
@@ -229,32 +229,7 @@ public class Experiments
    * @param items The items to be inserted. Given in no particular order.
    * @param c The comparator used to sort the elements
    * @return A reference to the constructed List
-   *
-   
-   
-   
-  public static <T>  List<T> SortedInsert(List<T> items, Comparator <T> c) 
-  {
-  	List l = new ArrayList<T>();
-  	for (int i = 0; i < items.size(); i++)
-  	{
-  		for (int j = 0; j < l.size(); j++)
-  		{
-  			
-  		}
-  		
-  		compare()
-  	}
-  	
-  	return l;
-  } 
-
-}
-*/
-
-
-
-
+   */
   public static <T> List<T> SortedInsert(List<T> items, Comparator<T> c) 
   {
 

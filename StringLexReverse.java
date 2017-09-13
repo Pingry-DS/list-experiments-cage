@@ -3,7 +3,7 @@ import java.util.Comparator;
 
 
 
-public class StringLexReverse implements Comaparator<String>
+public class StringLexReverse implements Comparator<String>
 {
 
 	public static void main(String[] args)
